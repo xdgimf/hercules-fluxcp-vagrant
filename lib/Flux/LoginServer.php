@@ -3,7 +3,7 @@ require_once 'Flux/BaseServer.php';
 require_once 'Flux/RegisterError.php';
 
 /**
- * Represents an rAthena Login Server.
+ * Represents a Hercules Login Server.
  */
 class Flux_LoginServer extends Flux_BaseServer {
 	/**

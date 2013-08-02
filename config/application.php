@@ -221,7 +221,7 @@ return array(
 			'Mob Database'  => array('module' => 'monster'),
 		),
 		'Misc. Stuff' => array(
-			'rA Logs'       => array('module' => 'logdata'),
+			'Hercules Logs' => array('module' => 'logdata'),
 			'CP Logs'       => array('module' => 'cplog'),
 			'IP Ban List'   => array('module' => 'ipban'),
 			'Accounts'      => array('module' => 'account'),
@@ -364,28 +364,28 @@ return array(
 	// Shouldn't need touching, however modifying loginerrors.php should be relatively safe.
 	'LoginErrors' => include('loginerrors.php'),
 	
-	// rA equip jobs mapping.
+	// Hercules equip jobs mapping.
 	'EquipJobs' => include('equip_jobs.php'),
 	
-	// rA equip locations mapping.
+	// Hercules equip locations mapping.
 	'EquipLocations' => include('equip_locations.php'),
 	
-	// rA equip upper mapping.
+	// Hercules equip upper mapping.
 	'EquipUpper' => include('equip_upper.php'),
 	
-	// rA monster sizes mapping.
+	// Hercules monster sizes mapping.
 	'MonsterSizes' => include('sizes.php'),
 	
-	// rA monster races mapping.
+	// Hercules monster races mapping.
 	'MonsterRaces' => include('races.php'),
 	
-	// rA elements mapping.
+	// Hercules elements mapping.
 	'Elements' => include('elements.php'),
 	
-	// rA attributes mapping.
+	// Hercules attributes mapping.
 	'Attributes' => include('attributes.php'),
 	
-	// rA monster modes mapping.
+	// Hercules monster modes mapping.
 	'MonsterModes' => include('monstermode.php'),
 	
 	// Item shop categories.

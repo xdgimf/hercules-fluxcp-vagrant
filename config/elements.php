@@ -1,5 +1,5 @@
 <?php
-// rA elements.
+// Hercules elements.
 return array(
 	0 => 'Neutral',
 	1 => 'Water',

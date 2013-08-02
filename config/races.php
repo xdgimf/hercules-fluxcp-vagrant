@@ -1,5 +1,5 @@
 <?php
-// rA monster races.
+// Hercules monster races.
 return array(
 	 0 => 'Formless',
 	 1 => 'Undead',
