@@ -1,3 +1,6 @@
+__MACOSX
+.DS_Store
+
 /data/items/icons/*.png
 /data/items/images/*.png
 
