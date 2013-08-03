@@ -41,6 +41,10 @@ try {
 		$weightOp     = $params->get('weight_op');
 		$attack       = $params->get('attack');
 		$attackOp     = $params->get('attack_op');
+		if ($server->isRenewal) {
+			$matk     = $params->get('matk');
+			$matkOp   = $params->get('matk_op');
+		}
 		$defense      = $params->get('defense');
 		$defenseOp    = $params->get('defense_op');
 		$range        = $params->get('range');
@@ -170,13 +174,24 @@ try {
 			}
 		}
 		
-		if (!$server->isRenewal && in_array($attackOp, $opValues) && trim($attack) != '') {
+		if (in_array($attackOp, $opValues) && trim($attack) != '') {
 			$op = $opMapping[$attackOp];
 			if ($op == '=' && $attack === '0') {
-				$sqlpartial .= "AND (attack IS NULL OR attack = 0) ";
+				$sqlpartial .= "AND (atk IS NULL OR atk = 0) ";
 			}
 			else {
-				$sqlpartial .= "AND attack $op ? ";
+				$sqlpartial .= "AND atk $op ? ";
+				$bind[]      = $attack;
+			}
+		}
+		
+		if ($server->isRenewal && in_array($matkOp, $opValues) && trim($matk) != '') {
+			$op = $opMapping[$matkOp];
+			if ($op == '=' && $matk === '0') {
+				$sqlpartial .= "AND (matk IS NULL OR matk = 0) ";
+			}
+			else {
+				$sqlpartial .= "AND matk $op ? ";
 				$bind[]      = $attack;
 			}
 		}
@@ -249,18 +264,20 @@ try {
 	$paginator = $this->getPaginator($sth->fetch()->total);
 	$sortable = array(
 		'item_id' => 'asc', 'name', 'type', 'equip_locations', 'price_buy', 'price_sell', 'weight',
-		'defense', 'range', 'slots', 'refineable', 'cost', 'origin_table'
+		'attack', 'defense', 'range', 'slots', 'refineable', 'cost', 'origin_table'
 	);
-	if(!$server->isRenewal) {
-		$sortable[] = 'attack';
+	if($server->isRenewal) {
+		$sortable[] = 'matk';
 	}
 	$paginator->setSortableColumns($sortable);
 	
 	$col  = "origin_table, items.id AS item_id, name_japanese AS name, type, ";
 	$col .= "IFNULL(equip_locations, 0) AS equip_locations, price_buy, weight/10 AS weight, ";
 	$col .= "defence AS defense, `range`, slots, refineable, cost, $shopTable.id AS shop_item_id, ";
-	$col .= "IFNULL(price_sell, FLOOR(price_buy/2)) AS price_sell, view, ";
-	$col .= ($server->isRenewal) ? "`atk:matk` AS attack" : "attack";
+	$col .= "IFNULL(price_sell, FLOOR(price_buy/2)) AS price_sell, view, atk AS attack";
+	if ($server->isRenewal) {
+		$col .= ", matk";
+	}
 	
 	$sql  = $paginator->getSQL("SELECT $col FROM $tableName $sqlpartial GROUP BY items.id");
 	$sth  = $server->connection->getStatement($sql);
