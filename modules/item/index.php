@@ -192,7 +192,7 @@ try {
 			}
 			else {
 				$sqlpartial .= "AND matk $op ? ";
-				$bind[]      = $attack;
+				$bind[]      = $matk;
 			}
 		}
 		
