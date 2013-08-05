@@ -192,29 +192,29 @@ return array(
 	// not at any given time depends on the user's account group level and/or
 	// their login status.
 	'MenuItems' => array(
-		'Main Menu'   => array(
-			'Home'          => array('module' => 'main'),
+		//'Main Menu'   => array(
+		//	'Home'          => array('module' => 'main'),
 			//'Forums'        => array('exturl' => 'http://www.fluxro.com/community'),
-		),
+		//),
 		'Account'     => array(
 			'Register'      => array('module' => 'account', 'action' => 'create'),
 			'Login'         => array('module' => 'account', 'action' => 'login'),
-			'Logout'        => array('module' => 'account', 'action' => 'logout'),
-			'History'       => array('module' => 'history'),
 			'My Account'    => array('module' => 'account', 'action' => 'view'),
+			'History'       => array('module' => 'history'),
+			'Logout'        => array('module' => 'account', 'action' => 'logout'),
 		),
 		'Donations'   => array(
-			'Purchase'      => array('module' => 'purchase'),
 			'Donate'        => array('module' => 'donate'),
+			'Purchase'      => array('module' => 'purchase'),
 		),
 		'Information' => array(
-			'Server Info.'  => array('module' => 'server', 'action' => 'info'),
+			'Server Info'   => array('module' => 'server', 'action' => 'info'),
 			'Server Status' => array('module' => 'server', 'action' => 'status'),
 			'WoE Hours'     => array('module' => 'woe'),
 			'Castles'       => array('module' => 'castle'),
 			"Who's Online"  => array('module' => 'character', 'action' => 'online'),
 			'Map Statistics'=> array('module' => 'character', 'action' => 'mapstats'),
-			'Ranking Info.' => array('module' => 'ranking', 'action' => 'character'),
+			'Ranking Info'  => array('module' => 'ranking', 'action' => 'character'),
 		),
 		'Database'    => array(
 			'Item Database' => array('module' => 'item'),
