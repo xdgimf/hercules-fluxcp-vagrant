@@ -7,7 +7,7 @@ $menuItems = $this->getMenuItems();
 <!-- NAVIGATION START -->
 <?php if (!empty($menuItems) || !empty($adminMenuItems)): ?>
 	<nav role="navigation" class="site-navigation main-navigation">
-		<div class="home-page-link"><a href="<?php echo $this->url() ?>" class="icon-home" title="Home"><span>Home</span></a></div>
+		<div class="home-page-link"><a href="<?php echo $this->url('main') ?>" class="icon-home" title="Home"><span>Home</span></a></div>
 		<div class="server-select">
 			<?php if (count($athenaServerNames=$session->getAthenaServerNames()) > 1): ?>
 			<span>Server:
