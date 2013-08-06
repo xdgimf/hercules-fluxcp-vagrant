@@ -8,6 +8,7 @@ $menuItems = $this->getMenuItems();
 <?php if (!empty($menuItems) || !empty($adminMenuItems)): ?>
 	<nav role="navigation" class="site-navigation main-navigation">
 		<div class="home-page-link"><a href="<?php echo $this->url('main') ?>" class="icon-home" title="Home"><span>Home</span></a></div>
+		<?php if ($session->isLoggedIn()): ?>
 		<div class="server-select">
 			<?php if (count($athenaServerNames=$session->getAthenaServerNames()) > 1): ?>
 			<span>Server:
@@ -22,7 +23,7 @@ $menuItems = $this->getMenuItems();
 				<input type="hidden" name="preferred_server" value="" />
 			</form>
 		</div>
-		
+		<?php endif ?>
 		<div>
 			<ul id="primary-nav" class="menu">
 			<?php if (!empty($menuItems)): ?>
