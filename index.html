@@ -1,79 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
+    <title>FluxCP - Hercules by HerculesWS</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <title>FluxCP - rAthena by missxantara</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>FluxCP - rAthena</h1>
-        <h2>Xantara's FluxCP for rAthena</h2>
-        <a href="https://github.com/missxantara/fluxcp-ra" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>Welcome to FluxCP - rAthena Page.</h3>
+      <header>
+        <h1>FluxCP - Hercules</h1>
+        <p>Flux Control Panel for Hercules</p>
+      </header>
 
-<p>Welcome to the Xantara's FluxCP Wiki! With the creation of rAthena, there became a need to support renewal changes and other features such as the new group system. This is where Xantara's Flux Control Panel comes in. It is a free and open source control panel to work with rAthena. Forked from FluxCP by Paradox924X and Byteflux at r1121.</p>
+      <div id="banner">
+        <span id="logo"></span>
 
-<h3>Download</h3>
+        <a href="https://github.com/HerculesWS/FluxCP" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/HerculesWS/FluxCP/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/HerculesWS/FluxCP/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
 
-<p>There are three ways to get a copy of this Control Panel. For detailed installation instructions, click here (TBD).</p>
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <p>Flux Control Panel for Hercules is a fork of popular and versatile FluxCP, updated to work with <a href="http://hercules.ws">Hercules server</a>.</p>
 
-<ol>
-<li>GIT Clone git clone <a href="https://github.com/missxantara/fluxcp-ra.git">https://github.com/missxantara/fluxcp-ra.git</a>
-</li>
-<li>SVN Checkout svn checkout <a href="https://github.com/missxantara/fluxcp-ra">https://github.com/missxantara/fluxcp-ra</a>
-</li>
-<li>ZIP Download <a href="https://github.com/missxantara/fluxcp-ra/archive/master.zip">https://github.com/missxantara/fluxcp-ra/archive/master.zip</a>
-</li>
-</ol><h3>Links</h3>
+<h4>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h4>
 
 <ul>
-<li>GIT and SVN Repository: <a href="https://github.com/missxantara/fluxcp-rA">https://github.com/missxantara/fluxcp-rA</a>
-</li>
-<li>Bug/Suggestion Reports: <a href="https://github.com/missxantara/fluxcp-rA/issues">https://github.com/missxantara/fluxcp-rA/issues</a>
-</li>
-<li>Wiki: <a href="https://github.com/missxantara/fluxcp-rA/wiki">https://github.com/missxantara/fluxcp-rA/wiki</a>
-</li>
-<li>rAthena Thread: <a href="http://rathena.org/board/topic/79203-xantaras-fluxcp/">http://rathena.org/board/topic/79203-xantaras-fluxcp/</a>
-</li>
+<li>PHP 5.2</li>
+<li>PDO and PDO-MYSQL extensions for PHP5 (including PHP_MYSQL support)</li>
+<li>MySQL 5</li>
+<li>Optional: GD2 (for guild emblems and registration CAPTCHA)</li>
+<li>Optional: Tidy (for cleaner HTML output)</li>
+<li>Optional: mod_rewrite support for UseCleanUrls feature</li>
+</ul><h4>
+<a name="downloads" class="anchor" href="#downloads"><span class="octicon octicon-link"></span></a>Downloads</h4>
+
+<p>Download zip/tar archive of lastest snapshot or checkout directly from Git/Subversion repository (links at the top of the page).</p>
+
+<h4>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h4>
+
+<p>For installation instructions visit project <a href="https://github.com/HerculesWS/FluxCP/wiki">Wiki</a>.</p>
+
+<h4>
+<a name="forums" class="anchor" href="#forums"><span class="octicon octicon-link"></span></a>Forums</h4>
+
+<ul>
+<li><a href="http://hercules.ws/board/topic/1901-flux-control-panel-for-hercules/">http://hercules.ws/board/topic/1901-flux-control-panel-for-hercules/</a></li>
 </ul>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/missxantara/fluxcp-ra/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/missxantara/fluxcp-ra/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/missxantara/fluxcp-ra"></a> is maintained by <a href="https://github.com/missxantara">missxantara</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/HerculesWS">HerculesWS</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-
-  
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
