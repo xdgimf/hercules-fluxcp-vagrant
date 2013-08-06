@@ -158,6 +158,10 @@ class Flux_SessionData {
 				$athenaServer->setCart($cartArray[$accountID][$athenaServerName]);
 			}
 		}
+
+		if (!$this->theme) {
+			$this->setThemeData(Flux::config('ThemeName.0'));
+		}
 		
 		return true;
 	}

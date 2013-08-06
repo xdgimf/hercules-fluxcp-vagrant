@@ -21,9 +21,25 @@
 			</div>
 			<?php endif ?>
 
+			<div class="site-info">
 			<?php if (Flux::config('ShowCopyright')): ?>
-			<div class="site-info">Powered by <a href="http://github.com/HerculesWS/FluxCP/">FluxCP</a> and <a href="http://github.com/HerculesWS/Hercules/">Hercules</a>.</div>
+			Powered by <a href="http://github.com/HerculesWS/FluxCP/">FluxCP</a> and <a href="http://github.com/HerculesWS/Hercules/">Hercules</a>. 
 			<?php endif ?>
+			<?php if (count(Flux::$appConfig->get('ThemeName', false)) > 1): ?>
+			<span>Theme:
+			<select name="preferred_theme" onchange="updatePreferredTheme(this)">
+				<?php foreach (Flux::$appConfig->get('ThemeName', false) as $themeName): ?>
+				<option value="<?php echo htmlspecialchars($themeName) ?>"<?php if ($session->theme == $themeName) echo ' selected="selected"' ?>><?php echo htmlspecialchars($themeName) ?></option>
+				<?php endforeach ?>
+			</select>
+			</span>
+			<?php endif ?>
+			<form action="<?php echo $this->urlWithQs ?>" method="post" name="preferred_theme_form" style="display: none">
+				<input type="hidden" name="preferred_theme" value="" />
+			</form>
+			</div>
+
+
 		</div>
 	</footer>
 </div>
