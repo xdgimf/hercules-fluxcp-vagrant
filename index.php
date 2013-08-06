@@ -133,7 +133,7 @@ try {
 	// Installer library.
 	$installer = Flux_Installer::getInstance();
 	if ($hasUpdates=$installer->updateNeeded())
-		Flux::config('ThemeName', 'installer');
+		Flux::config('ThemeName', array('installer'));
 
 	$sessionKey = Flux::config('SessionKey');
 	$sessionExpireDuration = Flux::config('SessionCookieExpire') * 60 * 60;
