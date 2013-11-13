@@ -273,6 +273,9 @@ class Flux {
 
 			if ($cache) {
 				$fp = fopen($cachefile, 'w');
+				if ( !$fp ){
+					self::raise("Failed to write ".$cachefile." permission error or data/tmp not exist in Flux::parseConfigFile()");
+				}
 				fwrite($fp, '<?php exit("Forbidden."); ?>');
 				fwrite($fp, $s=serialize($cf), strlen($s));
 				fclose($fp);
