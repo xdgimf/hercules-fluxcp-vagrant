@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>rA's Flux Control Panel: Critical Error</title>
+		<title>Hercules Flux Control Panel: Critical Error</title>
 		<style type="text/css" media="screen">
 			body {
 				margin: 10px;
