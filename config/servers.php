@@ -58,6 +58,7 @@ return array(
 				'DateTimezone'    => null, // Specifies game server's timezone for this char/map pair. (See: http://php.net/timezones)
 				//'ResetDenyMaps'   => 'sec_pri', // Defaults to 'sec_pri'. This value can be an array of map names.
 				//'Database'        => 'ragnarok', // Defaults to DbConfig.Database
+				'MaxBaseLevel'    => 150,
 				'ExpRates' => array(
 					'Base'        => 100, // Rate at which (base) exp is given
 					'Job'         => 100, // Rate at which job exp is given
