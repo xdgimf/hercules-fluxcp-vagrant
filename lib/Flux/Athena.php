@@ -26,6 +26,14 @@ class Flux_Athena {
 	public $serverName;
 	
 	/**
+	 * Maximum base level for characters.
+	 *
+	 * @access public
+	 * @var int
+	 */
+	public $maxBaseLevel;
+	
+	/**
 	 * Experience rates for base, job, and mvp bonus. Values in percents.
 	 * For example, 100 means 100% which is 1x offical rates.
 	 *
@@ -171,6 +179,7 @@ class Flux_Athena {
 		$this->loginDatabase   = $loginServer->config->getDatabase();
 		
 		$this->serverName      = $charMapConfig->getServerName();
+		$this->maxBaseLevel    = (int)$charMapConfig->getMaxBaseLevel();
 		$this->expRates        = $charMapConfig->getExpRates()->toArray();
 		$this->dropRates       = $charMapConfig->getDropRates()->toArray();
 		$this->isRenewal       = (boolean)$charMapConfig->getRenewal();

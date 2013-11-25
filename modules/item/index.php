@@ -32,18 +32,18 @@ try {
 		$opValues     = array_keys($opMapping);
 		$itemName     = $params->get('name');
 		$itemType     = $params->get('type');
-		$equipLoc     = $params->get('equip_loc');
+		$equipLocs    = $params->get('equip_loc');
 		$npcBuy       = $params->get('npc_buy');
 		$npcBuyOp     = $params->get('npc_buy_op');
 		$npcSell      = $params->get('npc_sell');
 		$npcSellOp    = $params->get('npc_sell_op');
 		$weight       = $params->get('weight');
 		$weightOp     = $params->get('weight_op');
-		$attack       = $params->get('attack');
-		$attackOp     = $params->get('attack_op');
+		$atk          = $params->get('atk');
+		$atkOp        = $params->get('atk_op');
 		if ($server->isRenewal) {
-			$matk     = $params->get('matk');
-			$matkOp   = $params->get('matk_op');
+			$matk         = $params->get('matk');
+			$matkOp       = $params->get('matk_op');
 		}
 		$defense      = $params->get('defense');
 		$defenseOp    = $params->get('defense_op');
@@ -106,19 +106,19 @@ try {
 			}
 		}
 
-		if ($equipLoc !== false && $equipLoc !== '-1') {
-			if(is_numeric($equipLoc) && (floatval($equipLoc) == intval($equipLoc))) {
+		if ($equipLocs !== false && $equipLocs !== '-1') {
+			if(is_numeric($equipLocs) && (floatval($equipLocs) == intval($equipLocs))) {
 				$equipLocationCombinations = Flux::config('EquipLocationCombinations')->toArray();
-				if (array_key_exists($equipLoc, $equipLocationCombinations) && $equipLocationCombinations[$equipLoc]) {
-					if ($equipLoc === '0') {
+				if (array_key_exists($equipLocs, $equipLocationCombinations) && $equipLocationCombinations[$equipLocs]) {
+					if ($equipLocs === '0') {
 						$sqlpartial .= "AND (equip_locations = 0 OR equip_locations IS NULL) ";
 					} else {
 						$sqlpartial .= "AND equip_locations = ? ";
-						$bind[]      = $equipLoc;
+						$bind[]      = $equipLocs;
 					}
 				}
 			} else {
-				$combinationName = preg_quote($equipLoc, '/');
+				$combinationName = preg_quote($equipLocs, '/');
 				$equipLocationCombinations = preg_grep("/.*?$combinationName.*?/i", Flux::config('EquipLocationCombinations')->toArray());
 				
 				if (count($equipLocationCombinations)) {
@@ -174,14 +174,14 @@ try {
 			}
 		}
 		
-		if (in_array($attackOp, $opValues) && trim($attack) != '') {
-			$op = $opMapping[$attackOp];
-			if ($op == '=' && $attack === '0') {
+		if (in_array($atkOp, $opValues) && trim($atk) != '') {
+			$op = $opMapping[$atkOp];
+			if ($op == '=' && $atk === '0') {
 				$sqlpartial .= "AND (atk IS NULL OR atk = 0) ";
 			}
 			else {
 				$sqlpartial .= "AND atk $op ? ";
-				$bind[]      = $attack;
+				$bind[]      = $atk;
 			}
 		}
 		
@@ -264,7 +264,7 @@ try {
 	$paginator = $this->getPaginator($sth->fetch()->total);
 	$sortable = array(
 		'item_id' => 'asc', 'name', 'type', 'equip_locations', 'price_buy', 'price_sell', 'weight',
-		'attack', 'defense', 'range', 'slots', 'refineable', 'cost', 'origin_table'
+		'atk', 'defense', 'range', 'slots', 'refineable', 'cost', 'origin_table'
 	);
 	if($server->isRenewal) {
 		$sortable[] = 'matk';
@@ -274,10 +274,7 @@ try {
 	$col  = "origin_table, items.id AS item_id, name_japanese AS name, type, ";
 	$col .= "IFNULL(equip_locations, 0) AS equip_locations, price_buy, weight/10 AS weight, ";
 	$col .= "defence AS defense, `range`, slots, refineable, cost, $shopTable.id AS shop_item_id, ";
-	$col .= "IFNULL(price_sell, FLOOR(price_buy/2)) AS price_sell, view, atk AS attack";
-	if ($server->isRenewal) {
-		$col .= ", matk";
-	}
+	$col .= "IFNULL(price_sell, FLOOR(price_buy/2)) AS price_sell, view, atk, matk";
 	
 	$sql  = $paginator->getSQL("SELECT $col FROM $tableName $sqlpartial GROUP BY items.id");
 	$sth  = $server->connection->getStatement($sql);

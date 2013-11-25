@@ -392,6 +392,7 @@ class Flux {
 				//
 				// Char/Map normalization.
 				//
+				$maxBaseLevel = 150;
 				$expRates = array(
 					'Base'        => 100,
 					'Job'         => 100,
@@ -410,6 +411,7 @@ class Flux {
 					'CardBoss'    => 100,
 					'MvpItem'     => 100
 				);
+				$charMapServer->setMaxBaseLevel($maxBaseLevel, $options);
 				$charMapServer->setExpRates($expRates, $options);
 				$charMapServer->setDropRates($dropRates, $options);
 				$charMapServer->setRenewal(true, $options);

@@ -83,15 +83,19 @@
 		</td>
 	</tr>
 	<tr>
-		<th>Attack</th>
-		<td><?php echo number_format((int)$item->attack) ?></td>
+		<th>ATK</th>
+		<td><?php echo number_format((int)$item->atk) ?></td>
 		<th>Min Equip Level</th>
 		<td><?php echo number_format((int)$item->equip_level_min) ?></td>
 	</tr>
-	<?php if($server->isRenewal): ?>
 	<tr>
+		<?php if($server->isRenewal): ?>
 		<th>MATK</th>
 		<td><?php echo number_format((int)$item->matk) ?></td>
+		<?php else: ?>
+		<th> </th>
+		<td> </td>
+		<?php endif ?>
 		<th>Max Equip Level</th>
 		<td>
 			<?php if ($item->equip_level_max == 0): ?>
@@ -101,7 +105,6 @@
 			<?php endif ?>
 		</td>
 	</tr>
-	<?php endif ?>
 	<tr>
 		<th>Equip Locations</th>
 		<td colspan="<?php echo $image ? 4 : 3 ?>">
