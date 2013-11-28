@@ -12,6 +12,20 @@ Requirements
 * Optional: Tidy (for cleaner HTML output)
 * Optional: mod_rewrite support for UseCleanUrls feature
 
-Extra credits
+Authors
 ---------
-Original FluxCP created by Paradox924X and Byteflux.
+The following people have contributed to the development of FluxCP through the years.
+
+Thank you for all your hard work.
+
+Boooo
+Byteflux86
+Gepard
+hemagx
+jaBote
+Mumbles
+Mysterious
+Paradox924X
+shugotenshi
+Streusel
+Xantara
