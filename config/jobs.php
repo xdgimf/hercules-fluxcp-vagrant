@@ -144,6 +144,8 @@ return array(
 	4191 => 'Expanded Super Baby',
 	
 	4211 => 'Kagerou',
-	4212 => 'Oboro'
+	4212 => 'Oboro',
+	
+	4215 => 'Rebellion'
 )
 ?>
