@@ -619,5 +619,11 @@ return array(
 	'WoeServerLabel'          => 'Servidores',
 	'WoeTimesLabel'           => 'Horários da Guerra do Emperium',
 	'WoeNotScheduledInfo'     => 'Não há nenhuma Guerra do Emperium agendada.',
+
+	// Security
+	'SecuritySessionInvalid'  => 'Desculpe, a sessão expirou, tente novamente.',
+	'SecurityNeedSession'     => 'Desculpe, nenhuma sessão forma encontrada (tentativa Hack?)',
+	'SecurityNeedToken'       => 'Desculpe, nenhum sinal encontrado para identificar ação (tentativa Hack ?)',
+
 );
 ?>
