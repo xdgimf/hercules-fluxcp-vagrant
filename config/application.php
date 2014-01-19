@@ -87,7 +87,7 @@ return array(
 	'BackwardYears'        => 30,                       // (Visual) The number of years to display behind the current year in date inputs.
 	'ColumnSortAscending'  => ' ▲',                     // (Visual) Text displayed for ascending sorted column names.
 	'ColumnSortDescending' => ' ▼',                     // (Visual) Text displayed for descending sorted column names.
-	'CreditExchangeRate'   => 1.0,                      // The rate at which credits are exchanged for dollars.
+	'CreditExchangeRate'   => 1.0,                      // The rate at which currency is exchanged for credits.
 	'MinDonationAmount'    => 2.0,                      // Minimum donation amount. (NOTE: Actual donations made that are less than this account won't be exchanged)
 	'DonationCurrency'     => 'USD',                    // Preferred donation currency. Only donations made in this currency will be processed for credit deposits.
 	'MoneyDecimalPlaces'   => 2,                        // (Visual) Number of decimal places to display in amount.
