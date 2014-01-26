@@ -622,8 +622,8 @@ return array(
 
 	// Security
 	'SecuritySessionInvalid'  => 'Desculpe, a sessão expirou, tente novamente.',
-	'SecurityNeedSession'     => 'Desculpe, nenhuma sessão forma encontrada (tentativa Hack?)',
-	'SecurityNeedToken'       => 'Desculpe, nenhum sinal encontrado para identificar ação (tentativa Hack ?)',
+	'SecurityNeedSession'     => 'Desculpe, nenhuma sessão encontrada (tentativa Hack?)',
+	'SecurityNeedToken'       => 'Desculpe, nenhum sinal encontrado para identificar há ação (tentativa Hack ?)',
 
 );
 ?>
