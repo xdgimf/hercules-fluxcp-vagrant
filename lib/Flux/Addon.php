@@ -50,5 +50,20 @@ class Flux_Addon {
 			return false;
 		}
 	}
+
+	public function getView(Flux_Template $template, $module, $action)
+	{
+		$path = "{$this->themeDir}/". $template->getName() . "/{$module}/{$action}.php";
+
+		if (file_exists($path)) {
+			return $path;
+		}
+
+		if (!empty($template->parentTemplate)) {
+			return $this->getView( $template->parentTemplate, $module, $action);
+		}
+
+		return false;
+	}
 }
 ?>
