@@ -5,7 +5,7 @@ if (!defined('FLUX_ROOT')) exit;
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>rA's Control Panel: Install &amp; Update</title>
+		<title>Flux Control Panel for Hercules: Install &amp; Update</title>
 		<style type="text/css">
 			body {
 				margin: 20px;
