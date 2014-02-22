@@ -115,24 +115,24 @@
 					<h1 class="site-title"><?php echo Flux::config('SiteTitle'); ?></h1>
 				</div>
 				<div id="loginbox" class="loginbox alignright">
-					<?php include 'main/loginbox.php' ?>
+					<?php include $this->themePath('main/loginbox.php', true) ?>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 
 			<div id="top-bar">
-				<?php include 'main/navigation.php' ?>
+				<?php include $this->themePath('main/navigation.php', true) ?>
 			</div>
 			
 			<div class="submenu-area  ">
 				<!-- Sub menu -->
-				<?php include 'main/submenu.php' ?>
+				<?php include $this->themePath('main/submenu.php', true) ?>
 							
 				<!-- Page menu -->
-				<?php include 'main/pagemenu.php' ?>
+				<?php include $this->themePath('main/pagemenu.php', true) ?>
 							
 				<!-- Credit balance -->
-				<?php if (in_array($params->get('module'), array('donate', 'purchase'))) include 'main/balance.php' ?>
+				<?php if (in_array($params->get('module'), array('donate', 'purchase'))) include $this->themePath('main/balance.php', true) ?>
 			</div>
 			
 		</header>
