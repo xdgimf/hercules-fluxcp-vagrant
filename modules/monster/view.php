@@ -8,7 +8,11 @@ require_once 'Flux/TemporaryTable.php';
 
 // Monsters table.
 $mobDB      = "{$server->charMapDatabase}.monsters";
-$fromTables = array("{$server->charMapDatabase}.mob_db", "{$server->charMapDatabase}.mob_db2");
+if($server->isRenewal) {
+	$fromTables = array("{$server->charMapDatabase}.mob_db_re", "{$server->charMapDatabase}.mob_db2");
+}else{
+	$fromTables = array("{$server->charMapDatabase}.mob_db", "{$server->charMapDatabase}.mob_db2");
+}
 $tempMobs   = new Flux_TemporaryTable($server->connection, $mobDB, $fromTables);
 
 // Monster Skills table.
@@ -27,7 +31,11 @@ $tempItems = new Flux_TemporaryTable($server->connection, $itemDB, $fromTables);
 
 $col  = 'origin_table, ID as monster_id, Sprite AS sprite, kName AS kro_name, iName AS iro_name, LV AS level, HP AS hp, ';
 $col .= 'EXP AS base_exp, JEXP as job_exp, Range1 AS range1, Range2 AS range2, Range3 AS range3, ';
-$col .= 'DEF AS defense, MDEF AS magic_defense, ATK1 AS attack1, ATK2 AS attack2, DEF AS defense, MDEF AS magic_defense, ';
+if($server->isRenewal) {
+	$col .= 'DEF AS defense, MDEF AS magic_defense, (LV+STR+FLOOR(ATK1*8/10)) AS attack1, (LV+STR+FLOOR(ATK1*12/10)) AS attack2, DEF AS defense, MDEF AS magic_defense, ';
+}else{
+	$col .= 'DEF AS defense, MDEF AS magic_defense, ATK1 AS attack1, ATK2 AS attack2, DEF AS defense, MDEF AS magic_defense, ';
+}
 $col .= 'STR AS strength, AGI AS agility, VIT AS vitality, `INT` AS intelligence, DEX AS dexterity, LUK AS luck, ';
 $col .= 'Scale AS size, Race AS race, (Element%10) AS element_type, (Element/20) AS element_level, Mode AS mode, ';
 $col .= 'Speed AS speed, aDelay AS attack_delay, aMotion AS attack_motion, dMotion AS delay_motion, ';
