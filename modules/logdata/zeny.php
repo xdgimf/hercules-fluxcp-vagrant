@@ -62,11 +62,7 @@ if ($logs) {
 	
 	if ($mobIDs) {
 		$mobDB      = "{$server->charMapDatabase}.monsters";
-		if($server->isRenewal){
-			$fromTables = array("{$server->charMapDatabase}.mob_db_re", "{$server->charMapDatabase}.mob_db2");
-		}else{
-			$fromTables = array("{$server->charMapDatabase}.mob_db", "{$server->charMapDatabase}.mob_db2");
-		}
+		$fromTables = array("{$server->charMapDatabase}.mob_db", "{$server->charMapDatabase}.mob_db2");
 		$tempMobs   = new Flux_TemporaryTable($server->connection, $mobDB, $fromTables);
 
 		$ids = array_keys($mobIDs);

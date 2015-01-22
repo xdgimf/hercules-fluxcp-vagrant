@@ -4,11 +4,7 @@ if (!defined('FLUX_ROOT')) exit;
 require_once 'Flux/Config.php';
 require_once 'Flux/TemporaryTable.php';
 
-if($server->isRenewal) {
-	$fromTables = array("{$server->charMapDatabase}.item_db_re", "{$server->charMapDatabase}.item_db2");
-} else {
-	$fromTables = array("{$server->charMapDatabase}.item_db", "{$server->charMapDatabase}.item_db2");
-}
+$fromTables = array("{$server->charMapDatabase}.item_db", "{$server->charMapDatabase}.item_db2");
 $tableName = "{$server->charMapDatabase}.items";
 $tempTable = new Flux_TemporaryTable($server->connection, $tableName, $fromTables);
 
@@ -22,10 +18,8 @@ if (!$itemID) {
 
 $col  = "id, view, type, name_english, name_japanese, slots, price_buy, price_sell, weight/10 AS weight, ";
 $col .= "defence, `range`, weapon_level, equip_level_min, equip_level_max, refineable, equip_locations, equip_upper, ";
-$col .= "equip_jobs, equip_genders, script, equip_script, unequip_script, origin_table, atk";
-if ($server->isRenewal) {
-	$col .= ", matk";
-}
+$col .= "equip_jobs, equip_genders, script, equip_script, unequip_script, origin_table, atk, matk";
+
 $sql  = "SELECT $col FROM $tableName WHERE id = ? LIMIT 1";
 $sth  = $server->connection->getStatement($sql);
 $sth->execute(array($itemID));
@@ -70,6 +64,7 @@ if ($item) {
 		$npcSell       = $item->price_sell;
 		$weight        = $item->weight;
 		$atk           = $item->atk;
+		$matk          = $item->matk;
 		$defense       = $item->defence;
 		$range         = $item->range;
 		$weaponLevel   = $item->weapon_level;
@@ -77,10 +72,6 @@ if ($item) {
 		$equipLocs     = $item->equip_locations;
 		$equipLevelMin = $item->equip_level_min;
 		$equipLevelMax = $item->equip_level_max;
-		
-		if ($server->isRenewal) {
-			$matk      = $item->matk;
-		}
 	}
 	
 	if ($item->equip_upper) {
@@ -121,15 +112,10 @@ if ($item) {
 	if (count($_POST) && $params->get('edititem')) {
 		// Sanitize to NULL
 		$nullables = array(
-			'viewID', 'slots', 'npcBuy', 'npcSell', 'weight', 'atk', 'defense', 'range', 'refineable', 
+			'viewID', 'slots', 'npcBuy', 'npcSell', 'weight', 'atk', 'matk', 'defense', 'range', 'refineable', 
 			'weaponLevel', 'equipLevelMin', 'equipLevelMax', 'script', 'equipScript', 'unequipScript'
 		);
 		
-		// If renewal is enabled, sanitize matk and equipLevelMax to NULL
-		if($server->isRenewal) {
-			array_push($nullables, 'matk');
-		}
-
 		foreach ($nullables as $nullable) {
 			if (trim($$nullable) == '') {
 				$$nullable = null;
@@ -159,7 +145,7 @@ if ($item) {
 		}
 		
 		// MATK is defaulted to a zero value.
-		if ($server->isRenewal && is_null($matk)) {
+		if (is_null($matk)) {
 			$matk = 0;
 		}
 		
@@ -319,6 +305,7 @@ if ($item) {
 					'price_buy'      => $npcBuy,
 					'price_sell'     => $npcSell,
 					'atk'            => $atk,
+					'matk'           => $matk,
 					'defence'        => $defense,
 					'`range`'        => $range,
 					'weapon_level'   => $weaponLevel,
@@ -329,12 +316,6 @@ if ($item) {
 					'unequip_script' => $unequipScript,
 					'refineable'     => $refineable
 				);
-				
-				if($server->isRenewal) {
-					$vals = array_merge($vals, array(
-						'matk' => $matk
-					));
-				}
 				
 				foreach ($vals as $col => $val) {
 					$cols[] = $col;

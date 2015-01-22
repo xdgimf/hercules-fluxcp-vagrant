@@ -101,7 +101,6 @@
 		</select>
 		<input type="text" name="atk" id="atk" value="<?php echo htmlspecialchars($params->get('atk')) ?>" />
 		...
-		<?php if($server->isRenewal): ?>
 		<label for="matk">MATK:</label>
 		<select name="matk_op">
 			<option value="eq"<?php if (($matk_op=$params->get('matk_op')) == 'eq') echo ' selected="selected"' ?>>is equal to</option>
@@ -110,7 +109,6 @@
 		</select>
 		<input type="text" name="matk" id="matk" value="<?php echo htmlspecialchars($params->get('matk')) ?>" />
 		...
-		<?php endif ?>
 		<label for="refineable">Refineable:</label>
 		<select name="refineable" id="refineable">
 			<option value=""<?php if (!($refineable=$params->get('refineable'))) echo ' selected="selected"' ?>>All</option>
@@ -148,9 +146,7 @@
 		<th><?php echo $paginator->sortableColumn('price_sell', 'NPC Sell') ?></th>
 		<th><?php echo $paginator->sortableColumn('weight', 'Weight') ?></th>
 		<th><?php echo $paginator->sortableColumn('atk', 'ATK') ?></th>
-		<?php if($server->isRenewal): ?>
 		<th><?php echo $paginator->sortableColumn('matk', 'MATK') ?></th>
-		<?php endif ?>
 		<th><?php echo $paginator->sortableColumn('defense', 'Defense') ?></th>
 		<th><?php echo $paginator->sortableColumn('range', 'Range') ?></th>
 		<th><?php echo $paginator->sortableColumn('slots', 'Slots') ?></th>
@@ -191,9 +187,7 @@
 		<td><?php echo number_format((int)$item->price_sell) ?></td>
 		<td><?php echo round($item->weight, 1) ?></td>
 		<td><?php echo number_format((int)$item->atk) ?></td>
-		<?php if($server->isRenewal): ?>
-			<td><?php echo number_format((int)$item->matk) ?></td>
-		<?php endif ?>
+		<td><?php echo number_format((int)$item->matk) ?></td>
 		<td><?php echo number_format((int)$item->defense) ?></td>
 		<td><?php echo number_format((int)$item->range) ?></td>
 		<td><?php echo number_format((int)$item->slots) ?></td>

@@ -73,13 +73,8 @@
 			<td><input type="text" name="equip_level_min" id="equip_level_min" value="<?php echo htmlspecialchars($equipLevelMin) ?>" /></td>
 		</tr>
 		<tr>
-			<?php if($server->isRenewal): ?>
 			<th><label for="matk">MATK</label></th>
 			<td><input type="text" name="matk" id="matk" value="<?php echo htmlspecialchars($matk) ?>" /></td>
-			<?php else: ?>
-			<th> </th>
-			<td> </td>
-			<?php endif ?>
 			<th><label for="equip_level_max">Max Equip Level</label></th>
 			<td><input type="text" name="equip_level_max" id="equip_level_max" value="<?php echo htmlspecialchars($equipLevelMax) ?>" /></td>
 		</tr>

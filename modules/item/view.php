@@ -7,11 +7,7 @@ $title = 'Viewing Item';
 
 require_once 'Flux/TemporaryTable.php';
 
-if($server->isRenewal) {
-	$fromTables = array("{$server->charMapDatabase}.item_db_re", "{$server->charMapDatabase}.item_db2");
-} else {
-	$fromTables = array("{$server->charMapDatabase}.item_db", "{$server->charMapDatabase}.item_db2");
-}
+$fromTables = array("{$server->charMapDatabase}.item_db", "{$server->charMapDatabase}.item_db2");
 $tableName = "{$server->charMapDatabase}.items";
 $tempTable = new Flux_TemporaryTable($server->connection, $tableName, $fromTables);
 $shopTable = Flux::config('FluxTables.ItemShopTable');
@@ -23,10 +19,7 @@ $col .= 'name_japanese AS name, type, ';
 $col .= 'price_buy, price_sell, weight/10 AS weight, defence, `range`, slots, ';
 $col .= 'equip_jobs, equip_upper, equip_genders, equip_locations, equip_level_min, equip_level_max, ';
 $col .= 'weapon_level, refineable, view, script, equip_script, unequip_script, origin_table, ';
-$col .= "$shopTable.cost, $shopTable.id AS shop_item_id, atk";
-if ($server->isRenewal) {
-	$col .= ", matk";
-}
+$col .= "$shopTable.cost, $shopTable.id AS shop_item_id, atk, matk";
 
 $sql  = "SELECT $col FROM {$server->charMapDatabase}.items ";
 $sql .= "LEFT OUTER JOIN {$server->charMapDatabase}.$shopTable ON $shopTable.nameid = items.id ";
@@ -43,11 +36,7 @@ if ($item) {
 	$isCustom = (bool)preg_match('/item_db2$/', $item->origin_table);
 	
 	$mobDB      = "{$server->charMapDatabase}.monsters";
-	if($server->isRenewal){
-		$fromTables = array("{$server->charMapDatabase}.mob_db_re", "{$server->charMapDatabase}.mob_db2");
-	}else{
-		$fromTables = array("{$server->charMapDatabase}.mob_db", "{$server->charMapDatabase}.mob_db2");
-	}
+	$fromTables = array("{$server->charMapDatabase}.mob_db", "{$server->charMapDatabase}.mob_db2");
 	$mobTable   = new Flux_TemporaryTable($server->connection, $mobDB, $fromTables);
 	
 	$col  = 'ID AS monster_id, iName AS monster_name, LV AS monster_level, ';

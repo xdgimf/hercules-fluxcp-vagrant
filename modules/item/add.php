@@ -146,14 +146,9 @@ if (count($_POST) && $params->get('additem')) {
 	
 	// Sanitize to NULL
 	$nullables = array(
-		'viewID', 'slots', 'npcBuy', 'npcSell', 'weight', 'atk', 'defense', 'range',
+		'viewID', 'slots', 'npcBuy', 'npcSell', 'weight', 'atk', 'matk', 'defense', 'range',
 		'weaponLevel', 'equipLevelMin', 'equipLevelMax', 'script', 'equipScript', 'unequipScript'
 	);
-	
-	// If renewal is enabled, sanitize matk and equipLevelMax to NULL
-	if ($server->isRenewal) {
-		array_push($nullables, 'matk');
-	}
 	
 	foreach ($nullables as $nullable) {
 		if (trim($$nullable) == '') {
@@ -251,11 +246,7 @@ if (count($_POST) && $params->get('additem')) {
 		if (empty($errorMessage)) {
 			require_once 'Flux/TemporaryTable.php';
 
-			if($server->isRenewal) {
-				$fromTables = array("{$server->charMapDatabase}.item_db_re", "{$server->charMapDatabase}.item_db2");
-			} else {
-				$fromTables = array("{$server->charMapDatabase}.item_db", "{$server->charMapDatabase}.item_db2");
-			}
+			$fromTables = array("{$server->charMapDatabase}.item_db", "{$server->charMapDatabase}.item_db2");
 			$tableName = "{$server->charMapDatabase}.items";
 			$tempTable = new Flux_TemporaryTable($server->connection, $tableName, $fromTables);
 			$shopTable = Flux::config('FluxTables.ItemShopTable');
@@ -277,6 +268,7 @@ if (count($_POST) && $params->get('additem')) {
 					'price_buy'      => $npcBuy,
 					'price_sell'     => $npcSell,
 					'atk'            => $atk,
+					'matk'           => $matk,
 					'defence'        => $defense,
 					'`range`'        => $range,
 					'weapon_level'   => $weaponLevel,
@@ -287,12 +279,6 @@ if (count($_POST) && $params->get('additem')) {
 					'unequip_script' => $unequipScript,
 					'refineable'     => $refineable
 				);
-				
-				if ($server->isRenewal) {
-					$vals = array_merge($vals, array(
-						'matk'       => $matk
-					));
-				}
 				
 				foreach ($vals as $col => $val) {
 					if (!is_null($val)) {
