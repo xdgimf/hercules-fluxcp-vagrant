@@ -616,6 +616,8 @@ return array(
 	'ServerStatusCharLabel'   => 'Character Server',
 	'ServerStatusMapLabel'    => 'Map Server',
 	'ServerStatusOnlineLabel' => 'Jugadores Conectados',
+	'ServerStatusATMerchantsLabel' => 'Comerciantes Autotrade',
+	'ServerStatusPopulationLabel' => 'Población',
 	
 	// Module: service
 	// - service/tos
