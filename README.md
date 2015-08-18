@@ -18,14 +18,14 @@ The following people have contributed to the development of FluxCP through the y
 
 Thank you for all your hard work.
 
-Boooo
-Byteflux86
-Gepard
-hemagx
-jaBote
-Mumbles
-Mysterious
-Paradox924X
-shugotenshi
-Streusel
-Xantara
+* Boooo
+* Byteflux86
+* Gepard
+* hemagx
+* jaBote
+* Mumbles
+* Mysterious
+* Paradox924X
+* shugotenshi
+* Streusel
+* Xantara
