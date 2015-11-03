@@ -1,4 +1,5 @@
 ﻿<?php
+// Original pt-br translation courtesy of Megasantos
 return array(	
 	// Generic/Misc.
 	'YesLabel'                => 'Sim',
