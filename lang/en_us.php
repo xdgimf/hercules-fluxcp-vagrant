@@ -89,6 +89,7 @@ return array(
 	'NewPasswordNeedLower'    => 'Your new password must contain at least %d lowercase letter(s).',
 	'NewPasswordNeedNumber'   => 'Your new password must contain at least %d number(s).',
 	'NewPasswordNeedSymbol'   => 'Your new password must contain at least %d symbol(s).',
+	'PasswordMAXSymbol'       => 'Your password can not be longer than %d characters.',
 	'PasswordHasBeenChanged'  => 'Your password has been changed, please log-in again.',
 	'FailedToChangePassword'  => 'Failed to change your password.  Please contact an admin.',
 	'PasswordChangeHeading'   => 'Change Your Password',

@@ -99,7 +99,7 @@ class Flux_LoginServer extends Flux_BaseServer {
 	 */
 	public function register($username, $password, $confirmPassword, $email, $gender, $birthdate, $securityCode)
 	{
-		if (preg_match('/^[^' . Flux::config('UsernameAllowedChars') . ']$/', $username)) {
+		if (preg_match('/[^' . Flux::config('UsernameAllowedChars') . ']/', $username)) {
 			throw new Flux_RegisterError('Invalid character(s) used in username', Flux_RegisterError::INVALID_USERNAME);
 		}
 		elseif (strlen($username) < Flux::config('MinUsernameLength')) {
@@ -135,7 +135,10 @@ class Flux_LoginServer extends Flux_BaseServer {
 		elseif (Flux::config('PasswordMinSymbol') > 0 && preg_match_all('/[^A-Za-z0-9]/', $password, $matches) < Flux::config('PasswordMinSymbol')) {
 			throw new Flux_RegisterError('Passwords must contain at least ' + intval(Flux::config('PasswordMinSymbol')) + ' symbol(s)', Flux_RegisterError::PASSWORD_NEED_SYMBOL);
 		}
-		elseif (!preg_match('/^(.+?)@(.+?)$/', $email)) {
+		elseif (Flux::config('PasswordMaxSymbols') > 0 && preg_match_all('/[^A-Za-z0-9]/', $password, $matches) > Flux::config('PasswordMaxSymbols')) {
+			throw new Flux_RegisterError('Passwords can not contain more than ' + intval(Flux::config('PasswordMaxSymbols')) + ' characters.', Flux_RegisterError::PASSWORD_MAX_SYMBOLS);
+		}
+		elseif (!preg_match('/^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9]+\.)([a-zA-Z0-9]+)$/', $email)) {
 			throw new Flux_RegisterError('Invalid e-mail address', Flux_RegisterError::INVALID_EMAIL_ADDRESS);
 		}
 		elseif (!in_array(strtoupper($gender), array('M', 'F'))) {
