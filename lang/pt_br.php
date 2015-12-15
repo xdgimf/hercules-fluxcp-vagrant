@@ -85,7 +85,6 @@ return array(
 	'NewPasswordNeedLower'    => 'Sua nova senha deve conter pelo menos %d letra(s) minúsculas.',
 	'NewPasswordNeedNumber'   => 'Sua nova senha deve conter pelo menos %d número(s).',
 	'NewPasswordNeedSymbol'   => 'Sua nova senha deve conter pelo menos %d símbolo (s).',
-	'PasswordMAXSymbol'       => 'Sua senha não pode ter mais de %d Caracteres.',
 	'PasswordHasBeenChanged'  => 'Sua senha foi alterada, por favor, faça log-in novamente.',
 	'FailedToChangePassword'  => 'Falha ao alterar sua senha. Por favor, contate um administrador.',
 	'PasswordChangeHeading'   => 'Alterar sua Senha',
