@@ -44,6 +44,7 @@ return array(
 	'PasswordMinLower'     => 1,                        // Number of lower-case letters to require in passwords.
 	'PasswordMinNumber'    => 1,                        // Number of numbers to require in passwords.
 	'PasswordMinSymbol'    => 0,                        // Number of symbols to require in passwords.
+	'EmailStrictCheck'     => false,                    // Whether to enable stricter checks for email addresses. (NOTE: there are perfectly valid email addresses that will be rejected if this setting is enabled).
 	'GMMinPasswordLength'  => 8,                        // Minimum password length for GM accounts.
 	'GMPasswordMinUpper'   => 1,                        // Number of upper-case letters to require in passwords for GM accounts.
 	'GMPasswordMinLower'   => 1,                        // Number of lower-case letters to require in passwords for GM accounts.

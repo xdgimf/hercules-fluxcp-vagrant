@@ -16,7 +16,10 @@ if (count($_POST)) {
 	elseif ($email == $session->account->email) {
 		$errorMessage = Flux::message('EmailCannotBeSame');
 	}
-	elseif (!preg_match('/^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9]+\.)([a-zA-Z0-9]+)$/', $email)) {
+	elseif (Flux::config('EmailStrictCheck') && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+		$errorMessage = Flux::message('EmailInvalid');
+	}
+	elseif (!preg_match('/^(.+?)@(.+?)$/', $email)) {
 		$errorMessage = Flux::message('EmailInvalid');
 	}
 	elseif ( !Flux_Security::csrfValidate('EmailEdit', $_POST, $error) ) {

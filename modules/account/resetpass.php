@@ -20,7 +20,10 @@ if (count($_POST)) {
 	elseif (preg_match('/[^' . Flux::config('UsernameAllowedChars') . ']/', $userid)) {
 		$errorMessage = sprintf(Flux::message('AccountInvalidChars'), Flux::config('UsernameAllowedChars'));
 	}
-	elseif (!preg_match('/^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9]+\.)([a-zA-Z0-9]+)$/', $email)) {
+	elseif (Flux::config('EmailStrictCheck') && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+		$errorMessage = Flux::message('InvalidEmailAddress');
+	}
+	elseif (!preg_match('/^(.+?)@(.+?)$/', $email)) {
 		$errorMessage = Flux::message('InvalidEmailAddress');
 	}
 	else {
