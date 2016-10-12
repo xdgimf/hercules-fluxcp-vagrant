@@ -3,8 +3,8 @@ vagrantfile:
     vm:
         provider:
             local:
-                box: puphpet/ubuntu1604-x64
-                box_url: puphpet/ubuntu1604-x64
+                box: puphpet/ubuntu1404-x64
+                box_url: puphpet/ubuntu1404-x64
                 box_version: '0'
                 chosen_virtualizer: virtualbox
                 virtualizers:
@@ -19,14 +19,14 @@ vagrantfile:
                         check_guest_tools: 0
                         update_guest_tools: 0
                 machines:
-                    vflm_b9nnw4immcce:
+                    vflm_v7zcgd3ytqao:
                         id: ro
                         hostname: ro.puphpet
                         network:
                             private_network: 192.168.56.101
                             forwarded_port:
-                                vflmnfp_kfvazshfap9w:
-                                    host: '5652'
+                                vflmnfp_jwquze4hdw3s:
+                                    host: '6664'
                                     guest: '22'
                         memory: '512'
                         cpus: '1'
@@ -40,7 +40,7 @@ vagrantfile:
                     - '--verbose'
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
         synced_folder:
-            vflsf_w1t8ny8fpi8y:
+            vflsf_brlwtm4ayq91:
                 source: ./
                 target: /var/www
                 sync_type: nfs
@@ -118,7 +118,7 @@ nginx:
         names_hash_bucket_size: 128
     upstreams: {  }
     vhosts:
-        nxv_3l6lcomli8n0:
+        nxv_8fq4pxrm3dh3:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -138,7 +138,7 @@ nginx:
             rewrite_to_https: '1'
             spdy: '1'
             locations:
-                nxvl_jkcxc6mhgjcw:
+                nxvl_qk17gic7xm5g:
                     location: /
                     try_files:
                         - $uri
@@ -149,7 +149,7 @@ nginx:
                     fastcgi_split_path: ''
                     proxy: ''
                     proxy_redirect: ''
-                nxvl_37mg06qx4ke0:
+                nxvl_rvjoxztt8sot:
                     location: '~ \.php$'
                     try_files:
                         - $uri
@@ -180,7 +180,7 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_zhqe2dea47nq:
+        av_4j8qyxyohuh6:
             servername: awesome.dev
             serveraliases:
                 - www.awesome.dev
@@ -199,7 +199,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_watuou8avou0:
+                avd_z0e2c5rxy9to:
                     path: /var/www/awesome
                     options:
                         - Indexes
@@ -211,7 +211,7 @@ apache:
                         - 'all granted'
                     custom_fragment: ''
                     files_match:
-                        avdfm_q2l853t7zthw:
+                        avdfm_hzjnkcl4fwm8:
                             path: \.php$
                             sethandler: 'proxy:fcgi://127.0.0.1:9000'
                             custom_fragment: ''
@@ -241,12 +241,12 @@ php:
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_hlzd6qbz1cn9:
+        phpfp_v26ih44ze4fd:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
                 security.limit_extensions: .php
-                user: www-data
+                user: www-user
                 group: www-data
     composer: '1'
     composer_home: ''
@@ -284,9 +284,9 @@ drush:
 ruby:
     install: '1'
     versions:
-        rv_1zman8nfry5i:
-            default: '1'
-            bundler: '1'
+        rv_fp1y6oly5myj:
+            default: '0'
+            bundler: '0'
             version: 2.3.1
             gems:
                 - deep_merge@1.0.1
@@ -323,15 +323,15 @@ mariadb:
         override_options: {  }
     adminer: 0
     users:
-        mariadbnu_3nx2v6ywt90n:
+        mariadbnu_u282qpouviv2:
             name: dbuser
             password: '123'
     databases:
-        mariadbnd_bb1thxxxxeqy:
+        mariadbnd_y0bomc77dnwv:
             name: dbname
             sql: ''
     grants:
-        mariadbng_zfvz8y4k7urq:
+        mariadbng_hvefsukzn4o5:
             user: dbuser
             table: '*.*'
             privileges:
@@ -340,19 +340,19 @@ mysql:
     install: '1'
     settings:
         version: '5.6'
-        root_password: '123'
+        root_password: root
         override_options: {  }
     adminer: 0
     users:
-        mysqlnu_jsax0i451cf2:
+        mysqlnu_nigixya533pk:
             name: ragnarok
             password: ragnarok
     databases:
-        mysqlnd_sb19g28yrzcb:
+        mysqlnd_3vb2pa0oq2gt:
             name: ragnarok
             sql: ''
     grants:
-        mysqlng_zyjk2zch5e8v:
+        mysqlng_yplw4ugnzadj:
             user: ragnarok
             table: '*.*'
             privileges:
@@ -417,7 +417,7 @@ elastic_search:
         version: 2.3.1
         java_install: true
     instances:
-        esi_mz6nw7la8j5k:
+        esi_uee59quvh8hh:
             name: es-01
 solr:
     install: '0'
