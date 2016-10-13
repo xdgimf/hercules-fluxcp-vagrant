@@ -1,0 +1,5 @@
+tunnels:
+  awesome:
+    proto: http
+    host_header: rewrite
+    addr: awesome.dev:80
